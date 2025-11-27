@@ -12,7 +12,7 @@ const dataDir = path.join(__dirname, '../data');
 // MongoDB Schemas
 const userSchema = new mongoose.Schema({
     username: { type: String, unique: true, required: true },
-    pin: String,
+    pinHash: String,
     xp: { type: Number, default: 0 },
     level: { type: Number, default: 1 },
     badges: [String],
