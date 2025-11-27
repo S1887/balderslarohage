@@ -1,0 +1,47 @@
+import React, { useState } from 'react';
+import { GameProvider, useGame } from './context/GameContext';
+import Login from './components/Login';
+import GameSelector from './components/GameSelector';
+import Dashboard from './components/Dashboard';
+import Game from './components/Game';
+import MultiplicationGame from './components/MultiplicationGame';
+import Profile from './components/Profile';
+import Highscores from './components/Highscores';
+
+const AppContent = () => {
+    const { user } = useGame();
+    const [currentView, setCurrentView] = useState('game-selector');
+
+    if (!user) {
+        return <Login />;
+    }
+
+    switch (currentView) {
+        case 'game-selector':
+            return <GameSelector onNavigate={setCurrentView} />;
+        case 'geography-game':
+            return <Game onBack={() => setCurrentView('game-selector')} />;
+        case 'multiplication-game':
+            return <MultiplicationGame onBack={() => setCurrentView('game-selector')} />;
+        case 'profile':
+            return <Profile onBack={() => setCurrentView('game-selector')} />;
+        case 'highscores':
+            return <Highscores onBack={() => setCurrentView('game-selector')} />;
+        // Legacy support for old dashboard view
+        case 'dashboard':
+            return <Dashboard onNavigate={setCurrentView} />;
+        default:
+            return <GameSelector onNavigate={setCurrentView} />;
+    }
+};
+
+function App() {
+    return (
+        <GameProvider>
+            <AppContent />
+        </GameProvider>
+    );
+}
+
+export default App;
+
