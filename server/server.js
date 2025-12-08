@@ -7,6 +7,7 @@ import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import highscoreRoutes from './routes/highscores.js';
 import multiplicationRoutes from './routes/multiplication.js';
+import mathRoutes from './routes/math.js';
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/highscores', highscoreRoutes);
 app.use('/api/multiplication', multiplicationRoutes);
+app.use('/api/math', mathRoutes);
 
 // Serve static files from the React app
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

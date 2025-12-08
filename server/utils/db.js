@@ -25,6 +25,15 @@ const userSchema = new mongoose.Schema({
     multiplicationBestTimed: {
         score: Number,
         time: String
+    },
+    mathBestFixed: {
+        score: Number,
+        time: String,
+        questions: Number
+    },
+    mathBestTimed: {
+        score: Number,
+        time: String
     }
 });
 
@@ -47,7 +56,16 @@ const multiplicationScoreSchema = new mongoose.Schema({
     timestamp: { type: Date, default: Date.now }
 });
 
-let usersDb, highscoresDb, multiplicationScoresDb;
+const mathScoreSchema = new mongoose.Schema({
+    username: String,
+    mode: String, // 'fixed', 'timed'
+    score: Number,
+    time: String,
+    questions: Number,
+    timestamp: { type: Date, default: Date.now }
+});
+
+let usersDb, highscoresDb, multiplicationScoresDb, mathScoresDb;
 
 // Wrapper to make Mongoose behave like NeDB for simple queries
 const createMongooseWrapper = (Model) => ({
@@ -71,19 +89,22 @@ if (process.env.MONGODB_URI) {
     const User = mongoose.model('User', userSchema);
     const Highscore = mongoose.model('Highscore', highscoreSchema);
     const MultiplicationScore = mongoose.model('MultiplicationScore', multiplicationScoreSchema);
+    const MathScore = mongoose.model('MathScore', mathScoreSchema);
 
     usersDb = createMongooseWrapper(User);
     highscoresDb = createMongooseWrapper(Highscore);
     multiplicationScoresDb = createMongooseWrapper(MultiplicationScore);
+    mathScoresDb = createMongooseWrapper(MathScore);
 } else {
     console.log('Using local NeDB (file-based)...');
     usersDb = Datastore.create({ filename: path.join(dataDir, 'users.db'), autoload: true });
     highscoresDb = Datastore.create({ filename: path.join(dataDir, 'highscores.db'), autoload: true });
     multiplicationScoresDb = Datastore.create({ filename: path.join(dataDir, 'multiplication-scores.db'), autoload: true });
+    mathScoresDb = Datastore.create({ filename: path.join(dataDir, 'math-scores.db'), autoload: true });
 
     // Ensure unique username
     usersDb.ensureIndex({ fieldName: 'username', unique: true });
 }
 
-export { usersDb, highscoresDb, multiplicationScoresDb };
+export { usersDb, highscoresDb, multiplicationScoresDb, mathScoresDb };
 

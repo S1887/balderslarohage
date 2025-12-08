@@ -5,7 +5,9 @@ import {
   syncProgress,
   getHighscores,
   saveMultiplicationScore,
-  getMultiplicationBestScores
+  getMultiplicationBestScores,
+  saveMathScore,
+  getMathBestScores
 } from '../api/client';
 
 const GameContext = createContext();
@@ -46,6 +48,7 @@ export const GameProvider = ({ children }) => {
   useEffect(() => {
     if (user?.username) {
       fetchMultiplicationBestScores();
+      fetchMathBestScores();
     }
   }, [user?.username]);
 
@@ -69,6 +72,20 @@ export const GameProvider = ({ children }) => {
       }));
     } catch (err) {
       console.error('Failed to fetch best scores:', err);
+    }
+  };
+
+  const fetchMathBestScores = async () => {
+    if (!user) return;
+    try {
+      const bestScores = await getMathBestScores(user.username);
+      setUser(prev => ({
+        ...prev,
+        mathBestFixed: bestScores.fixed,
+        mathBestTimed: bestScores.timed
+      }));
+    } catch (err) {
+      console.error('Failed to fetch math best scores:', err);
     }
   };
 
@@ -141,8 +158,18 @@ export const GameProvider = ({ children }) => {
     }
   };
 
+  const saveMathScoreFunc = async (mode, score, time, questions) => {
+    if (!user) return;
+    try {
+      await saveMathScore(user.username, mode, score, time, questions);
+      await fetchMathBestScores(); // Refresh best scores
+    } catch (err) {
+      console.error('Failed to save math score:', err);
+    }
+  };
+
   return (
-    <GameContext.Provider value={{ user, login, register, logout, addXP, highscores, error, saveScore }}>
+    <GameContext.Provider value={{ user, login, register, logout, addXP, highscores, error, saveScore, saveMathScore: saveMathScoreFunc }}>
       {children}
     </GameContext.Provider>
   );

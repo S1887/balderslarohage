@@ -5,6 +5,7 @@ import GameSelector from './components/GameSelector';
 import Dashboard from './components/Dashboard';
 import Game from './components/Game';
 import MultiplicationGame from './components/MultiplicationGame';
+import MathGame from './components/MathGame';
 import Profile from './components/Profile';
 import Highscores from './components/Highscores';
 
@@ -23,6 +24,8 @@ const AppContent = () => {
             return <Game onBack={() => setCurrentView('game-selector')} />;
         case 'multiplication-game':
             return <MultiplicationGame onBack={() => setCurrentView('game-selector')} />;
+        case 'math-game':
+            return <MathGame onBack={() => setCurrentView('game-selector')} />;
         case 'profile':
             return <Profile onBack={() => setCurrentView('game-selector')} />;
         case 'highscores':

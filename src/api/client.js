@@ -56,3 +56,20 @@ export const getMultiplicationBestScores = async (username) => {
     return response.data;
 };
 
+// Math game API
+export const saveMathScore = async (username, mode, score, time, questions) => {
+    const response = await client.post('/math/score', {
+        username,
+        mode,
+        score,
+        time,
+        questions
+    });
+    return response.data;
+};
+
+export const getMathBestScores = async (username) => {
+    const response = await client.get(`/math/best/${username}`);
+    return response.data;
+};
+
