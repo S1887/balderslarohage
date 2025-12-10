@@ -64,22 +64,29 @@ const MathGame = ({ onBack }) => {
         };
     }, [view, gameMode]);
 
-    // Generate random math question (plus or minus)
+    // Generate random math question (plus or minus) based on level
     const generateQuestion = () => {
         const isAddition = Math.random() > 0.5;
         let num1, num2, correctAnswer, operator;
+        const level = user ? user.level : 1;
+
+        // Define difficulty ranges based on level
+        let maxNumber = 5;
+        if (level >= 8) maxNumber = 100;
+        else if (level >= 5) maxNumber = 50;
+        else if (level >= 3) maxNumber = 20;
+        else if (level >= 2) maxNumber = 10;
 
         if (isAddition) {
-            // Addition: 1-20 + 1-20
-            num1 = Math.floor(Math.random() * 20) + 1;
-            num2 = Math.floor(Math.random() * 20) + 1;
+            // Addition: 1-max + 1-max
+            num1 = Math.floor(Math.random() * maxNumber) + 1;
+            num2 = Math.floor(Math.random() * maxNumber) + 1;
             correctAnswer = num1 + num2;
             operator = '+';
         } else {
-            // Subtraction: 1-20 - 1-20 (ensure positive result or simple negative?)
-            // Let's ensure num1 >= num2 for now to avoid negatives for easier difficulty
-            const a = Math.floor(Math.random() * 20) + 1;
-            const b = Math.floor(Math.random() * 20) + 1;
+            // Subtraction
+            const a = Math.floor(Math.random() * maxNumber) + 1;
+            const b = Math.floor(Math.random() * maxNumber) + 1;
             num1 = Math.max(a, b);
             num2 = Math.min(a, b);
             correctAnswer = num1 - num2;

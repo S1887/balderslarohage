@@ -6,3 +6,4 @@
 {"username":"Algot","xp":260,"level":3,"date":{"$$date":1764183223012},"_id":"jpmGAwmhoaVX8VLw"}
 {"username":"S1887","score":5,"gameMode":"map-quiz","xp":195,"level":2,"createdAt":{"$$date":1764235051991},"_id":"qD10XTSAuVQHRsaY","updatedAt":{"$$date":1764278111947}}
 {"username":"test123","xp":0,"level":1,"date":{"$$date":1764274880792},"_id":"x7ChPPZQSZ2Lg9rR"}
+{"username":"S1887","score":3,"gameMode":"standard","xp":270,"level":3,"createdAt":{"$$date":1765199434151},"_id":"83vAbppxSz7aIHDx"}

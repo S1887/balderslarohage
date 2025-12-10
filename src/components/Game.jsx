@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useGame } from '../context/GameContext';
-import { landscapes, countries, capitals, mapQuestions } from '../data/geographyData';
+import { swedenQuestions, countries, capitals, mapQuestions } from '../data/geographyData';
 import MapComponent from './MapComponent';
 
 const Game = ({ onBack }) => {
@@ -38,11 +38,11 @@ const Game = ({ onBack }) => {
 
     const startGame = (category) => {
         let allQuestions = [];
-        if (category === 'landscapes') allQuestions = [...landscapes];
+        if (category === 'sweden') allQuestions = [...swedenQuestions];
         else if (category === 'countries') allQuestions = [...countries];
         else if (category === 'capitals') allQuestions = [...capitals];
         else if (category === 'map') allQuestions = [...mapQuestions];
-        else allQuestions = [...landscapes, ...countries, ...capitals];
+        else allQuestions = [...swedenQuestions, ...countries, ...capitals];
 
         // Filter by difficulty based on user level
         const userLevel = user ? user.level : 1;
@@ -55,11 +55,11 @@ const Game = ({ onBack }) => {
 
         // Fallback
         if (allQuestions.length === 0) {
-            if (category === 'landscapes') allQuestions = [...landscapes];
+            if (category === 'sweden') allQuestions = [...swedenQuestions];
             else if (category === 'countries') allQuestions = [...countries];
             else if (category === 'capitals') allQuestions = [...capitals];
             else if (category === 'map') allQuestions = [...mapQuestions];
-            else allQuestions = [...landscapes, ...countries, ...capitals];
+            else allQuestions = [...swedenQuestions, ...countries, ...capitals];
         }
 
         // Shuffle
@@ -232,7 +232,7 @@ const Game = ({ onBack }) => {
                         <button onClick={() => startGame('map')} className="btn btn-primary">Starta Kartquiz</button>
                     ) : (
                         <>
-                            <button onClick={() => startGame('landscapes')} className="btn btn-primary">Sveriges Landskap</button>
+                            <button onClick={() => startGame('sweden')} className="btn btn-primary">Sverige Runt</button>
                             <button onClick={() => startGame('countries')} className="btn btn-secondary">Världens Länder</button>
                             <button onClick={() => startGame('capitals')} className="btn btn-primary">Huvudstäder</button>
                             <button onClick={() => startGame('mix')} className="btn btn-secondary">Blandat</button>

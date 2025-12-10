@@ -64,16 +64,25 @@ const MultiplicationGame = ({ onBack }) => {
         };
     }, [view, gameMode]);
 
-    // Generate random multiplication question
+    // Generate random multiplication question based on level
     const generateQuestion = () => {
-        const num1 = Math.floor(Math.random() * 12) + 1;
-        const num2 = Math.floor(Math.random() * 12) + 1;
+        const level = user ? user.level : 1;
+        let maxFactor = 3;
+
+        if (level >= 10) maxFactor = 12;
+        else if (level >= 8) maxFactor = 10;
+        else if (level >= 5) maxFactor = 9;
+        else if (level >= 3) maxFactor = 6;
+        else if (level >= 2) maxFactor = 4;
+
+        const num1 = Math.floor(Math.random() * maxFactor) + 1;
+        const num2 = Math.floor(Math.random() * maxFactor) + 1;
         const correctAnswer = num1 * num2;
 
         // Generate 3 wrong answers
         const wrongAnswers = new Set();
         while (wrongAnswers.size < 3) {
-            const offset = Math.floor(Math.random() * 20) - 10;
+            const offset = Math.floor(Math.random() * 10) - 5; // Smaller offset for easier levels
             const wrongAnswer = correctAnswer + offset;
             if (wrongAnswer > 0 && wrongAnswer !== correctAnswer && wrongAnswer <= 144) {
                 wrongAnswers.add(wrongAnswer);

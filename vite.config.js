@@ -7,6 +7,7 @@ export default defineConfig({
     assetsInclude: ['**/*.geojson'],
     server: {
         host: true, // Listen on all addresses
+        port: 5176,
         proxy: {
             '/api': {
                 target: 'http://localhost:5000',

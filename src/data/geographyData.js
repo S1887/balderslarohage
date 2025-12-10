@@ -220,6 +220,39 @@ export const landscapes = [
     { id: 'l15', name: 'Blekinge', question: 'Vilket landskap kallas för "Sveriges trädgård"?', options: ['Skåne', 'Blekinge', 'Halland', 'Småland'], answer: 'Blekinge', fact: 'Blekinge kallas så på grund av sin lummiga natur och många ekar.', difficulty: 3 },
 ];
 
+
+
+export const swedishCities = [
+    // Difficulty 1
+    { id: 'c1', name: 'Stockholm', question: 'Vilken stad är Sveriges huvudstad?', options: ['Göteborg', 'Malmö', 'Stockholm', 'Uppsala'], answer: 'Stockholm', fact: 'Stockholm är byggt på 14 öar och kallas ofta "Nordens Venedig".', difficulty: 1 },
+    { id: 'c2', name: 'Göteborg', question: 'Vilken stad är Sveriges näst största?', options: ['Malmö', 'Västerås', 'Göteborg', 'Örebro'], answer: 'Göteborg', fact: 'Göteborg grundades av Gustav II Adolf år 1621.', difficulty: 1 },
+    { id: 'c3', name: 'Malmö', question: 'I vilken stad hittar du skyskrapan Turning Torso?', options: ['Lund', 'Helsingborg', 'Malmö', 'Stockholm'], answer: 'Malmö', fact: 'Turning Torso är Nordens högsta skyskrapa och är 190 meter hög.', difficulty: 1 },
+    { id: 'c4', name: 'Kiruna', question: 'Vilken stad är känd för sin järnmalmsgruva och att staden flyttas?', options: ['Luleå', 'Kiruna', 'Umeå', 'Sundsvall'], answer: 'Kiruna', fact: 'Kiruna håller på att flyttas för att marken under staden har blivit instabil på grund av gruvdriften.', difficulty: 1 },
+    { id: 'c5', name: 'Visby', question: 'Vilken stad är känd för sin ringmur och ligger på en ö?', options: ['Borgholm', 'Kalmar', 'Visby', 'Karlskrona'], answer: 'Visby', fact: 'Visby är en hansestad och finns med på UNESCOs världsarvslista.', difficulty: 1 },
+
+    // Difficulty 2
+    { id: 'c6', name: 'Uppsala', question: 'I vilken stad ligger Sveriges äldsta universitet?', options: ['Lund', 'Uppsala', 'Linköping', 'Umeå'], answer: 'Uppsala', fact: 'Uppsala universitet grundades år 1477.', difficulty: 2 },
+    { id: 'c7', name: 'Jönköping', question: 'Vilken stad ligger vid Vätterns södra ände?', options: ['Motala', 'Jönköping', 'Huskvarna', 'Gränna'], answer: 'Jönköping', fact: 'Jönköping är känt för sin tändsticksindustri.', difficulty: 2 },
+    { id: 'c8', name: 'Halmstad', question: 'Vilken stad förknippas med popgruppen Gyllene Tider?', options: ['Varberg', 'Falkenberg', 'Halmstad', 'Laholm'], answer: 'Halmstad', fact: 'Per Gessle och Gyllene Tider kommer från Halmstad.', difficulty: 2 },
+];
+
+export const landscapeAnimals = [
+    // Difficulty 1
+    { id: 'a1', name: 'Älg', question: 'Vilket är Jämtlands landskapsdjur?', options: ['Björn', 'Varg', 'Älg', 'Järv'], answer: 'Älg', fact: 'Älgen kallas ofta för skogens konung.', difficulty: 1 },
+    { id: 'a2', name: 'Igelkott', question: 'Vilket är Gotlands landskapsdjur?', options: ['Räv', 'Grävling', 'Igelkott', 'Säl'], answer: 'Igelkott', fact: 'Gotland vimlar av igelkottar, som är ett fridlyst djur.', difficulty: 1 },
+    { id: 'a3', name: 'Berguv', question: 'Vilket är Dalarnas landskapsdjur?', options: ['Örn', 'Hök', 'Berguv', 'Uggla'], answer: 'Berguv', fact: 'Berguven är en av världens största ugglor.', difficulty: 1 },
+
+    // Difficulty 2
+    { id: 'a4', name: 'Lodjur', question: 'Vilket är Hälsinglands landskapsdjur?', options: ['Varg', 'Järv', 'Lodjur', 'Björn'], answer: 'Lodjur', fact: 'Lodjuret är Europas största kattdjur.', difficulty: 2 },
+    { id: 'a5', name: 'Utter', question: 'Vilket är Smålands landskapsdjur?', options: ['Bäver', 'Mård', 'Utter', 'Iller'], answer: 'Utter', fact: 'Uttern är ett mårddjur som lever i vatten och är en skicklig simmare.', difficulty: 2 },
+    { id: 'a6', name: 'Fjällräv', question: 'Vilket är Lapplands landskapsdjur?', options: ['Rödräv', 'Varg', 'Fjällräv', 'Järv'], answer: 'Fjällräv', fact: 'Fjällräven är hotad i Skandinavien men stammen har återhämtat sig något på senare år.', difficulty: 2 },
+    { id: 'a7', name: 'Knubbsäl', question: 'Vilket är Bohusläns landskapsdjur?', options: ['Gråsäl', 'Knubbsäl', 'Vikare', 'Tumlare'], answer: 'Knubbsäl', fact: 'Knubbsälen är vanlig längs västkusten.', difficulty: 2 },
+    { id: 'a8', name: 'Kronhjort', question: 'Vilket är Skånes landskapsdjur?', options: ['Rådjur', 'Dovhjort', 'Kronhjort', 'Vildsvin'], answer: 'Kronhjort', fact: 'Kronhjorten är Skånes största vilda landdäggdjur.', difficulty: 2 },
+    { id: 'a9', name: 'Varg', question: 'Vilket är Värmlands landskapsdjur?', options: ['Björn', 'Lodjur', 'Varg', 'Järv'], answer: 'Varg', fact: 'Värmland har en av Sveriges tätaste vargstammar.', difficulty: 2 },
+];
+
+export const swedenQuestions = [...landscapes, ...swedishCities, ...landscapeAnimals];
+
 export const countries = generatedCountries;
 export const capitals = generatedCapitals;
 export const mapQuestions = generatedMapQuestions;
