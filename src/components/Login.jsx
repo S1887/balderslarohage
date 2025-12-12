@@ -28,11 +28,16 @@ const Login = () => {
                 {error && <div style={{ color: 'var(--error)', marginBottom: '1rem' }}>{error}</div>}
 
                 <form onSubmit={handleSubmit} style={{ marginTop: '2rem' }}>
+                    {isRegistering && (
+                        <p style={{ textAlign: 'left', marginBottom: '0.5rem', color: '#666', fontSize: '0.9rem' }}>
+                            Använd ett gamingnamn (ej riktigt namn)
+                        </p>
+                    )}
                     <input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Användarnamn"
+                        placeholder={isRegistering ? "Gamingnamn" : "Användarnamn"}
                         required
                         style={{
                             width: '100%',
